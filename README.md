@@ -1,14 +1,14 @@
-# SR-FLIPFLOP-USING-CASE
-
-**AIM:**
+# EX 06 : SR-FLIPFLOP-USING-CASE
+### Date : 24/10/24
+### AIM :
 
 To implement  SR flipflop using verilog and validating their functionality using their functional tables
 
-**SOFTWARE REQUIRED:**
+#### SOFTWARE REQUIRED: 
 
 Quartus prime
 
-**THEORY**
+### THEORY :
 
 SR Flip-Flop SR flip-flop operates with only positive clock transitions or negative clock transitions. Whereas, SR latch operates with enable signal. The circuit diagram of SR flip-flop is shown in the following figure.
 
@@ -32,17 +32,55 @@ By using three variable K-Map, we can get the simplified expression for next sta
  
 The maximum possible groupings of adjacent ones are already shown in the figure. Therefore, the simplified expression for next state Qt+1t+1 is Q(t+1)=S+R′Q(t)Q(t+1)=S+R′Q(t)
 
-**Procedure**
+# Procedure :
 
-/* write all the steps invloved */
+1.Type the program in Quartus software.
 
-**PROGRAM**
+2.Compile and run the program.
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+3.Generate the RTL schematic and save the logic diagram.
 
-**RTL LOGIC FOR FLIPFLOPS**
+4.Create nodes for inputs and outputs to generate the timing diagram.
 
-**TIMING DIGRAMS FOR FLIP FLOPS**
+5.For different input combinations generate the timing diagram.
 
-**RESULTS**
+# Program :
+
+```
+NAME : VISHAL M.A
+
+REGISTER NUMBER : 212222230177
+
+module ex06(q,q_bar, s, r, clk, reset);
+input s, r, clk, reset;
+output reg q;
+output q_bar;
+always@(posedge clk) begin
+if (!reset) q<=0;
+else
+begin
+case({s,r})
+2'b00:q<=q; 
+2'b01:q<=1'b0; 
+2'b10:q<=1'b1;
+2'b11:q<=1'bx;
+endcase
+end
+end
+assign q_bar=~q;
+endmodule
+```
+
+# RTL realization : 
+
+![EX 4 OUTPUT](https://github.com/user-attachments/assets/03ed458c-2826-4fc7-acb6-d1f738fcd9cd)
+
+
+# Timing waveform : 
+
+![EX 4 WAVEFORM](https://github.com/user-attachments/assets/193260df-20f7-4954-92a9-b79524e63caa)
+
+
+# Result : 
+
+The observation of the simulation results and confirm the successful execution of the program.
